@@ -1,20 +1,22 @@
-<section data-ng-controller="ArticlesController" data-ng-init="find()">
+<section data-ng-controller="JobsController" data-ng-init="find()">
 	<div class="page-header">
-		<h1>Articles</h1>
+		<h1>Jobs</h1>
 	</div>
-	<div class="list-group">
-		<a data-ng-repeat="article in articles" data-ng-href="#!/articles/{{article._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="article.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="article.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="article.title"></h4>
-			<p class="list-group-item-text" data-ng-bind="article.content"></p>
-		</a>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="articles.$resolved && !articles.length">
-		No articles yet, why don't you <a href="/#!/articles/create">create one</a>?
+	<table class="table table-striped">
+		<tr>
+			<th>Job Title</th>
+			<th>Company</th>
+			<th>Hourly Wage</th>
+			<th>Date Listed</th>
+		</tr>
+		<tr data-ng-repeat="job in jobs">
+			<td><a href="#!/jobs/{{job._id}}">{{job.title}} - {{job.state}}</a></td>
+			<td>{{job.company}}</td>
+			<td>{{job.hourly_wage}}</td>
+			<td>{{job.created}}</td>
+		</tr>
+	</table>
+	<div class="alert alert-warning text-center" data-ng-if="jobs.$resolved && !jobs.length">
+		No job yet, why don't you <a href="/#!/jobs/create">create one</a>?
 	</div>
 </section>
