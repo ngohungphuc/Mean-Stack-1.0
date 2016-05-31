@@ -7,16 +7,16 @@ var users = require('../../app/controllers/users.server.controller'),
 	jobs = require('../../app/controllers/jobs.server.controller');
 
 module.exports = function(app) {
-	// Article Routes
+	// job Routes
 	app.route('/jobs')
 		.get(jobs.list)
 		.post(users.requiresLogin, jobs.create);
 
-	app.route('/jobs/:jobByID')
+	app.route('/jobs/:jobId')
 		.get(jobs.read)
 		.put(users.requiresLogin, jobs.hasAuthorization, jobs.update)
 		.delete(users.requiresLogin, jobs.hasAuthorization, jobs.delete);
 
-	// Finish by binding the article middleware
+	// Finish by binding the job middleware
 	app.param('jobId', jobs.jobByID);
 };

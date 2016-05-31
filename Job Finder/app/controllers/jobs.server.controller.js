@@ -70,22 +70,22 @@ exports.delete = function(req, res) {
 };
 
 /**
- * List of Articles
+ * List of Jobs
  */
 exports.list = function(req, res) {
-	Job.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+	Job.find().sort('-created').populate('user', 'displayName').exec(function(err, jobs) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.json(articles);
+			res.json(jobs);
 		}
 	});
 };
 
 /**
- * Article middleware
+ * Job middleware
  */
 exports.jobByID = function(req, res, next, id) {
 
@@ -108,7 +108,7 @@ exports.jobByID = function(req, res, next, id) {
 };
 
 /**
- * Article authorization middleware
+ * Job authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
 	if (req.job.user.id !== req.user.id) {
