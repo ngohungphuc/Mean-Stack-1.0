@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="">
+	<script src="js/angular.min.js"></script>
+	<script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+</head>
+<body>
+	<div ng-app="mainApp">
+		<p><a href="#addStudent">Add Student</a></p>
+		<p><a href="#viewStudent">View Student</a></p>
+		<div ng-view></div>
+		<script type="text/ng-template" id="addStudents.htm">{{message}}</script>
+		<script type="text/ng-template" id="viewStudents.htm">{{message}}</script>
+	</div>
+	<script type="text/javascript">
+		var mainApp=angular.module('mainApp', ['ngRoute']);
+		mainApp.config(['$routeProvider',function($routeProvider){
+			$routeProvider.when('/addStudent', {
+				templateUrl: 'addStudents.htm',
+				controller: 'AddStudentController'
+			}).when('/viewStudent', {
+				templateUrl: 'viewStudents.htm',
+				controller: 'ViewStudentsController'
+			}).otherwise({ redirectTo: '/addStudent' });
+		}]);
+		mainApp.controller('AddStudentController', ['$scope', function ($scope) {
+			$scope.message="Add student";
+		}]);
+		mainApp.controller('ViewStudentsController', ['$scope', function ($scope) {
+			$scope.message="View student";
+		}]);
+	</script>
+</body>
+</html>

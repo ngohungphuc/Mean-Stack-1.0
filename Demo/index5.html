@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Angular JS</title>
+    <link rel="stylesheet" href="">
+    <script src="js/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="mainApp" ng-controller="CalController">
+        Enter number <p><input type="number" ng-model="number"></input></p>
+        <button type="button" ng-click="square()">X <sup>2</sup></button>
+        <p>Result {{result}}</p>
+    </div>
+    <script type="text/javascript">
+        /*var mainApp=angular.module('mainApp', []);
+        mainApp.factory('MathService',function () {
+            var factory={};
+            factory.multiply=function(a,b){
+                return a*b;
+            }
+            return factory;
+        });
+        mainApp.service('CalService',function (MathService) {
+            this.square=function(a){
+                return MathService.multiply(a,a);
+            }
+        });
+        mainApp.controller('CalController', function ($scope,CalService) {
+            $scope.square=function(){
+                $scope.result=CalService.square($scope.number);
+            }
+        });*/
+        var mainApp=angular.module('mainApp', []);
+        mainApp.factory('MathService',function () {
+            var factory={};
+            factory.multiply=function(a,b){
+                return a*b;
+            }
+            return factory;
+        });
+        mainApp.controller('CalController', function ($scope,MathService) {
+            $scope.square=function(){
+                $scope.result=MathService.multiply($scope.number,$scope.number);
+            }
+        });
+    </script>
+</body>
+</html>

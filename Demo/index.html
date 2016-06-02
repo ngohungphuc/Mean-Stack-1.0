@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="">
+	<script src="js/angular.min.js"></script>
+</head>
+<body ng-app="myapp" ng-init="countries=[{locale:'en-US',name:'United States'},{locale:'vn',name:'Viet nams'}]">
+	<div ng-controller="HelloController">
+		Welcome {{hello.title}}
+		<p><input type="text" ng-model="name"></p>
+		<p>Hi <span ng-bind="name"></span></p>
+		<ol>
+		    <li ng-repeat="country in countries">
+		    	{{'Country: '+country.name + ', Locale: '+country.locale}}
+		    </li>
+		</ol>
+	</div>
+	<script>
+		/**
+		*  Module
+		*
+		* Description
+		*/
+		angular.module('myapp', []).controller('HelloController', ['$scope', function ($scope) {
+			$scope.hello={};
+			$scope.hello.title="Phuc";
+		}]);
+	</script>
+</body>
+</html>

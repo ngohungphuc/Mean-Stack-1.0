@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="">
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="mainApp" ng-controller="studentController">
+		<input type="text" ng-model="student.firstname"></input><br>
+		<input type="text" ng-model="student.lastname"></input><br>
+		You are enter {{student.fullName() | uppercase}}<br>
+		Filter by subject name<input type="text" ng-model="subjectName"></input><br>
+		<ul>
+			<li ng-repeat="subjects in student.subject | filter:subjectName | orderBy:'mark'">
+				{{'Subject name ' + subjects.name + '  subject mark :' + subjects.mark}}
+			</li>
+		</ul>
+		<input type="checkbox" ng-model="disableBtn">
+		<button type="button" ng-disabled="disableBtn">Click</button>
+	</div>
+
+	<script>
+		/**
+		*  Module
+		*
+		* Description
+		*/
+		angular.module('mainApp', []).controller('studentController', ['$scope', function ($scope) {
+			$scope.student={
+				firstname:"hung",
+				lastname:"phuc",
+				subject:[
+				{name:'Physics',mark:80},
+				{name:'English',mark:70},
+				{name:'Math',mark:60},
+				],
+				fullName:function(){
+					var studentObj;
+					studentObj=$scope.student;
+					return studentObj.firstname + ' ' + studentObj.lastname; 
+				}
+			};
+		}]);
+	</script>
+</body>
+</html>

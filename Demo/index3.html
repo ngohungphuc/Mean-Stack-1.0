@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Angular JS</title>
+	<link rel="stylesheet" href="">
+	<script src="js/angular.min.js"></script>
+</head>
+<body>
+	<div ng-app="mainApp" ng-controller="studentController">
+		<form name="studentForm" novalidate>
+             Enter First Name:<input type="text" name="first_name" ng-model="first_name" required>
+             <span style="color:red" ng-show="studentForm.first_name.$dirty && studentForm.first_name.$invalid">
+             <span ng-show="studentForm.first_name.$error.required">Required</span>
+             </span>
+			<button ng-disabled="studentForm.first_name.$dirty && studentForm.first_name.$invalid">submit</button>
+			<div ng-include = "'/xampp/htdocs/angularjs/index.html'"></div>
+		</form>
+	</div>
+	<script>
+		/**
+		*  Module
+		*
+		* Description
+		*/
+		angular.module('mainApp', []).controller('studentController', ['$scope', function ($scope) {
+			$scope.first_name="Ngo";
+		}])
+	</script>
+</body>
+</html>
