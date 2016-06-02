@@ -4,13 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
 var mongo= require('mongodb');
 var mongoose= require('mongoose');
 var db=mongoose.connection;
-mongoose.connect('mongodb://localhost/knownlegdebase');
+mongoose.connect('mongodb://localhost/knownledgebase');
+
 var routes = require('./routes/index');
 var articles = require('./routes/articles');
-var categories = require('./routes/categories');
+
+
 var app = express();
 
 // view engine setup
