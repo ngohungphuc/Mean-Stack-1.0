@@ -3,7 +3,7 @@ var router = express.Router();
 //require article object
 var Article=require('../models/article');
 
-//get all
+//get all article
 router.get('/', function(req, res, next) {
 	Article.getArticles(function(err,articles){
 		if(err){
