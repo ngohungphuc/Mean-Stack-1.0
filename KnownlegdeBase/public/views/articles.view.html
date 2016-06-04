@@ -1,1 +1,19 @@
-articles view
+<h3 class="heading">Lastest Articles</h3>
+<div ng-controller="ArticlesCtrl">
+	<div class="row">
+		<div class="articles">
+			<div ng-repeat="article in articles">
+				<div class="col-md-12">
+					<h3>{{article.title}}</h3>
+					<p>{{article.body}}</p>
+					<a href="#/articles/details/{{article._id}}" class="btn btn-default">View Article</a>
+				</div>
+			</div>
+			<div ng-if="articles == false">
+				<div class="alert alert-danger">
+					No articles to display
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

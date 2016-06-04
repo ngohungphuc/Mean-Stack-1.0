@@ -6,7 +6,7 @@ app.config(['$routeProvider',function($routeProvider){
 		controller: 'ArticlesCtrl'
 	}).when('/articles/details/:id', {
 		templateUrl: 'views/article_detail.view.html',
-		controller: 'ArticlesDetailCtrl'
+		controller: 'ArticleDetailCtrl'
 	}).when('/articles/category/:category', {
 		templateUrl: 'views/cat_article.view.html',
 		controller: 'ArticlesCategoryCtrl'
