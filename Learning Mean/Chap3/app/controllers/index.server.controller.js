@@ -1,4 +1,7 @@
 //export function render so we can call function anywhere
 exports.render = function(req, res) {
-	res.send('Hello world');
+	//look for index.ejs file in view folder
+	res.render('index', {
+		title : 'Hello world'
+	})
 };
